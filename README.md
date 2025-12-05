@@ -1,203 +1,188 @@
-# CineVerse - Movie Discovery & Review Platform
+# CineVerse
 
-A full-stack web application for discovering, reviewing, and sharing movies. Built with React, Node.js/Express, and MongoDB.
+A full-stack movie discovery and review platform where users can explore movies, write reviews, create watchlists, and connect with other film enthusiasts.
 
-![CineVerse](https://img.shields.io/badge/CineVerse-Movie%20Platform-gold)
+![CineVerse Banner](https://image.tmdb.org/t/p/original/uDgy6hyPd82kOHh6I95FLtLnj6p.jpg)
 
-## 🎬 Features
-
-### User Roles
-- **Viewer** - Browse movies, write reviews, create watchlists, follow users
-- **Critic** - All viewer features + verified badge, featured reviews
-- **Admin** - Full access to manage users and content
-
-### Pages
-1. **Home** (`/`, `/home`) - Landing page with trending movies, personalized content for logged-in users
-2. **Search** (`/search`, `/search/:query`) - Search movies via TMDB API with filters
-3. **Details** (`/details/:id`) - Movie details with cast, reviews, and related movies
-4. **Profile** (`/profile`, `/profile/:id`) - User profiles with public/private views
-5. **Login/Register** (`/login`, `/register`) - Authentication with role selection
-6. **Admin Dashboard** (`/admin`) - Admin-only user and content management
-
-### Key Features
-- 🔐 JWT-based authentication with session management
-- 🎭 Role-based access control (Viewer, Critic, Admin)
-- 🔍 Real-time movie search via TMDB API
-- ⭐ User reviews with ratings and comments
-- 📋 Watchlists and favorites
-- 👥 Follow/follower system
-- 🔒 Privacy settings for profile information
-- 📱 Fully responsive design
-- 🍪 Privacy policy with cookie consent
-
-## 🛠️ Tech Stack
+## Technologies Used
 
 ### Frontend
-- React 18
-- React Router v6
-- Framer Motion (animations)
-- React Icons
-- React Hot Toast (notifications)
-- Axios
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
 
 ### Backend
-- Node.js
-- Express.js
-- MongoDB with Mongoose
-- JWT for authentication
-- bcryptjs for password hashing
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)
 
 ### External APIs
-- [The Movie Database (TMDB)](https://www.themoviedb.org/) for movie data
+![TMDB](https://img.shields.io/badge/TMDB-01B4E4?style=for-the-badge&logo=themoviedatabase&logoColor=white)
 
-## 📁 Project Structure
+## Features
+
+### User Management
+- User registration and authentication with JWT
+- Three user roles: Viewer, Critic, and Admin
+- Profile customization with avatar, bio, and social links
+- Follow/unfollow other users
+- Privacy settings for profile visibility
+
+### Movie Discovery
+- Browse trending, popular, top-rated, and upcoming movies
+- Advanced search with filters (genre, year, rating)
+- Detailed movie pages with cast, crew, and trailers
+- Similar movie recommendations
+
+### Reviews and Lists
+- Write and publish movie reviews with ratings
+- Create personal watchlists and favorites
+- View reviews from critics and other users
+
+### User Interaction
+- Follow critics and friends
+- View activity feeds
+- Discover new users in the community
+
+## Installation
+
+### Prerequisites
+- Node.js (v14 or higher)
+- MongoDB (local or Atlas)
+- TMDB API Key
+
+### Setup
+
+1. Clone the repository
+```bash
+git clone https://github.com/aarush6848ddh/CineVerse.git
+cd CineVerse
+```
+
+2. Install server dependencies
+```bash
+npm install
+```
+
+3. Install client dependencies
+```bash
+cd client
+npm install
+cd ..
+```
+
+4. Create environment file
+```bash
+cp .env.example .env
+```
+
+5. Configure environment variables in `.env`
+```
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+TMDB_API_KEY=your_tmdb_api_key
+```
+
+6. Start the development server
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:3000`
+
+## Project Structure
 
 ```
-wd-final-project/
+CineVerse/
 ├── client/                 # React frontend
 │   ├── public/
 │   └── src/
-│       ├── components/     # Reusable components
-│       │   ├── common/     # LoadingScreen, PrivacyPolicy
-│       │   ├── layout/     # Navbar, Footer
-│       │   ├── movies/     # MovieCard
-│       │   └── reviews/    # ReviewCard
-│       ├── context/        # AuthContext
+│       ├── components/     # Reusable UI components
+│       ├── context/        # React context providers
 │       ├── pages/          # Page components
-│       ├── services/       # API service
-│       └── styles/         # Global CSS
+│       ├── services/       # API service functions
+│       └── styles/         # Global styles
 ├── server/                 # Express backend
-│   ├── config/             # Configuration
-│   ├── middleware/         # Auth middleware
-│   ├── models/             # Mongoose models
-│   └── routes/             # API routes
+│   ├── config/            # Configuration files
+│   ├── middleware/        # Custom middleware
+│   ├── models/            # Mongoose schemas
+│   └── routes/            # API routes
 └── package.json
 ```
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 16+
-- MongoDB (local or Atlas)
-- TMDB API Key (get one at https://www.themoviedb.org/settings/api)
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd wd-final-project
-```
-
-2. Install dependencies:
-```bash
-npm run install-all
-```
-
-3. Configure environment:
-   - Update `server/config/config.js` with your MongoDB URI and TMDB API key
-
-4. Start MongoDB (if running locally):
-```bash
-mongod
-```
-
-5. Run the application:
-```bash
-npm start
-```
-
-This starts both the server (port 4000) and client (port 3000).
-
-### Development URLs
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:4000/api
-
-## 📊 Data Models
-
-### User
-- Authentication (username, email, password)
-- Profile info (name, bio, avatar, location)
-- Private fields (phone, dateOfBirth)
-- Role (viewer, critic, admin)
-- Relations: followers, following, watchlist, favorites
-
-### Review
-- Movie reference (TMDB ID)
-- Content (title, content, rating)
-- Author reference
-- Engagement (likes, comments)
-
-### MovieList
-- Creator reference
-- List of movies with notes
-- Privacy and engagement
-
-### Activity
-- User activity tracking for feeds
-
-## 🔗 API Endpoints
+## API Endpoints
 
 ### Authentication
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - User login
-- `POST /api/auth/logout` - User logout
-- `GET /api/auth/me` - Get current user
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/register` | Register new user |
+| POST | `/api/auth/login` | User login |
+| GET | `/api/auth/me` | Get current user |
 
 ### Users
-- `GET /api/users/:id` - Get user profile
-- `PUT /api/users/profile` - Update profile
-- `POST /api/users/:id/follow` - Follow/unfollow user
-- `POST /api/users/watchlist/:movieId` - Add/remove from watchlist
-- `POST /api/users/favorites/:movieId` - Add/remove from favorites
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/users/:id` | Get user profile |
+| PUT | `/api/users/:id` | Update user profile |
+| POST | `/api/users/:id/follow` | Follow a user |
+| DELETE | `/api/users/:id/follow` | Unfollow a user |
 
-### Movies (TMDB)
-- `GET /api/movies/trending` - Trending movies
-- `GET /api/movies/search` - Search movies
-- `GET /api/movies/:id` - Movie details
+### Movies
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/movies/trending` | Get trending movies |
+| GET | `/api/movies/popular` | Get popular movies |
+| GET | `/api/movies/search` | Search movies |
+| GET | `/api/movies/:id` | Get movie details |
 
 ### Reviews
-- `GET /api/reviews` - Recent reviews
-- `GET /api/reviews/movie/:movieId` - Movie reviews
-- `POST /api/reviews` - Create review
-- `PUT /api/reviews/:id` - Update review
-- `POST /api/reviews/:id/like` - Like/unlike review
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/reviews/movie/:id` | Get reviews for a movie |
+| POST | `/api/reviews` | Create a review |
+| PUT | `/api/reviews/:id` | Update a review |
+| DELETE | `/api/reviews/:id` | Delete a review |
 
-## 🎨 Design System
+## Database Schema
 
-### Colors
-- Background: Dark theme (#0a0a0b, #111113)
-- Accent: Cinema Gold (#d4af37)
-- Text: White/Gray scale
+### User Model
+- username, email, password (hashed)
+- firstName, lastName, bio, avatar
+- role (viewer, critic, admin)
+- watchlist, favorites
+- followers, following
+- privacySettings
 
-### Typography
-- Display: Playfair Display
-- Body: Outfit
+### Review Model
+- user (reference)
+- movieId, movieTitle, moviePoster
+- rating, title, content
+- likes, comments
+- timestamps
 
-### Components
-- Responsive navigation
-- Movie cards with hover effects
-- Review cards with engagement
-- Form inputs with validation
-- Toast notifications
+### MovieList Model
+- user (reference)
+- title, description
+- movies array
+- isPublic flag
 
-## 📱 Responsive Breakpoints
-- Mobile: < 640px
-- Tablet: 640px - 1024px
-- Desktop: > 1024px
+## Contributing
 
-## 🔐 Security Features
-- Password hashing with bcrypt
-- JWT tokens with expiration
-- HTTP-only cookies
-- Session management
-- Role-based route protection
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/new-feature`)
+3. Commit your changes (`git commit -m 'Add new feature'`)
+4. Push to the branch (`git push origin feature/new-feature`)
+5. Open a Pull Request
 
-## 📄 License
+## License
 
-This project is for educational purposes as part of a Web Development course.
+This project is licensed under the MIT License.
 
-## 🙏 Acknowledgments
-- [TMDB](https://www.themoviedb.org/) for movie data
-- Course instructors and teaching assistants
+## Acknowledgements
 
+- [The Movie Database (TMDB)](https://www.themoviedb.org/) for the movie data API
+- [React Icons](https://react-icons.github.io/react-icons/) for the icon library
+- [Framer Motion](https://www.framer.com/motion/) for animations
