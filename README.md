@@ -46,53 +46,6 @@ A full-stack movie discovery and review platform where users can explore movies,
 - View activity feeds
 - Discover new users in the community
 
-## Installation
-
-### Prerequisites
-- Node.js (v14 or higher)
-- MongoDB (local or Atlas)
-- TMDB API Key
-
-### Setup
-
-1. Clone the repository
-```bash
-git clone https://github.com/aarush6848ddh/CineVerse.git
-cd CineVerse
-```
-
-2. Install server dependencies
-```bash
-npm install
-```
-
-3. Install client dependencies
-```bash
-cd client
-npm install
-cd ..
-```
-
-4. Create environment file
-```bash
-cp .env.example .env
-```
-
-5. Configure environment variables in `.env`
-```
-PORT=5000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
-TMDB_API_KEY=your_tmdb_api_key
-```
-
-6. Start the development server
-```bash
-npm run dev
-```
-
-The application will be available at `http://localhost:3000`
-
 ## Project Structure
 
 ```
@@ -168,14 +121,6 @@ CineVerse/
 - title, description
 - movies array
 - isPublic flag
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-feature`)
-3. Commit your changes (`git commit -m 'Add new feature'`)
-4. Push to the branch (`git push origin feature/new-feature`)
-5. Open a Pull Request
 
 ## License
 
