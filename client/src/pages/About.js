@@ -17,7 +17,7 @@ const About = () => {
             <div className="team-card">
               <div className="team-avatar">AS</div>
               <h3>Aarush Singh</h3>
-              <p className="team-section-info">Section: CS5610</p>
+              <p className="team-section-info">Section: CS4550</p>
             </div>
           </div>
         </section>
