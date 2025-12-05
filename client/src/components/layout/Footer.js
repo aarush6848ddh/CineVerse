@@ -68,12 +68,10 @@ const Footer = () => {
             </div>
 
             <div className="footer-section">
-              <h4>Support</h4>
+              <h4>Project</h4>
               <ul>
-                <li><Link to="/search">Help Center</Link></li>
-                <li><Link to="/search">Contact Us</Link></li>
-                <li><Link to="/search">FAQ</Link></li>
-                <li><Link to="/search">Feedback</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><a href="https://github.com/aarush6848ddh/CineVerse" target="_blank" rel="noopener noreferrer">GitHub</a></li>
               </ul>
             </div>
           </div>

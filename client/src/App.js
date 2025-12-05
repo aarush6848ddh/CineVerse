@@ -17,6 +17,7 @@ const MovieDetails = lazy(() => import('./pages/MovieDetails'));
 const Profile = lazy(() => import('./pages/Profile'));
 const EditProfile = lazy(() => import('./pages/EditProfile'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+const About = lazy(() => import('./pages/About'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Protected Route Component
@@ -62,6 +63,7 @@ function App() {
             <Route path="/search/:query" element={<Search />} />
             <Route path="/details/:id" element={<MovieDetails />} />
             <Route path="/profile/:id" element={<Profile />} />
+            <Route path="/about" element={<About />} />
             
             {/* Protected Routes */}
             <Route 

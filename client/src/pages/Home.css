@@ -357,3 +357,27 @@
   }
 }
 
+/* Project Info Link */
+.project-info-section {
+  padding: var(--space-8) 0;
+  text-align: center;
+  border-top: var(--border-subtle);
+}
+
+.project-info-link {
+  display: inline-block;
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-bg-tertiary);
+  border: var(--border-subtle);
+  border-radius: var(--radius-lg);
+  color: var(--color-accent-primary);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.project-info-link:hover {
+  background: var(--color-bg-elevated);
+  border-color: var(--color-accent-primary);
+  transform: translateY(-2px);
+}
+

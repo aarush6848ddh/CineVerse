@@ -353,6 +353,15 @@ const Home = () => {
           )}
         </div>
       </section>
+
+      {/* Project Info Link */}
+      <section className="section project-info-section">
+        <div className="container">
+          <Link to="/about" className="project-info-link">
+            View Project Info, Team Members & GitHub Repository
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };
