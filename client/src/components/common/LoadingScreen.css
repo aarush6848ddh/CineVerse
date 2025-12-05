@@ -1,0 +1,63 @@
+/* Loading Screen Styles */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-primary);
+  z-index: 9999;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.loading-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+}
+
+.loading-logo .logo-icon {
+  font-size: 2.5rem;
+}
+
+.loading-logo .logo-text {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.loading-spinner-container {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.loading-ring {
+  position: absolute;
+  inset: 0;
+  border: 3px solid transparent;
+  border-top-color: var(--color-accent-primary);
+  border-radius: 50%;
+}
+
+.loading-ring.inner {
+  inset: 8px;
+  border-top-color: transparent;
+  border-right-color: var(--color-accent-secondary);
+}
+
+.loading-message {
+  color: var(--color-text-tertiary);
+  font-size: var(--text-sm);
+}
+

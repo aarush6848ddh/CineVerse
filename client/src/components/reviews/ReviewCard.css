@@ -1,0 +1,224 @@
+/* Review Card Styles */
+.review-card {
+  background: var(--gradient-card);
+  border: var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  transition: all var(--transition-base);
+}
+
+.review-card:hover {
+  border-color: rgba(212, 175, 55, 0.2);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Movie Info */
+.review-movie {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  text-decoration: none;
+}
+
+.review-movie-poster {
+  width: 50px;
+  height: 75px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--color-bg-tertiary);
+}
+
+.review-movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.poster-placeholder-small {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: var(--color-bg-elevated);
+}
+
+.review-movie-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.review-movie-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-1);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.review-movie-year {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* Rating */
+.review-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-4);
+}
+
+.review-rating.high {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--color-rating-high);
+}
+
+.review-rating.mid {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-rating-mid);
+}
+
+.review-rating.low {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--color-rating-low);
+}
+
+/* Review Content */
+.review-content {
+  margin-bottom: var(--space-4);
+}
+
+.review-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-base);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  color: var(--color-text-primary);
+}
+
+.spoiler-warning {
+  display: inline-flex;
+  color: var(--color-warning);
+  font-size: 0.9em;
+}
+
+.review-text {
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* Author */
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  text-decoration: none;
+}
+
+.review-author-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  overflow: hidden;
+}
+
+.review-author-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.review-author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-author-name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.review-author-name .badge {
+  font-size: var(--text-xs);
+}
+
+.review-date {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* Engagement */
+.review-engagement {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+.engagement-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+}
+
+/* Tags */
+.review-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.review-tag {
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* Compact variant */
+.review-card.compact {
+  padding: var(--space-4);
+}
+
+.review-card.compact .review-movie-poster {
+  width: 40px;
+  height: 60px;
+}
+
+.review-card.compact .review-text {
+  -webkit-line-clamp: 2;
+}
+
