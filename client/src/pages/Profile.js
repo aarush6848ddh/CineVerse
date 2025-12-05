@@ -7,7 +7,7 @@ import {
   FiStar, FiUserPlus, FiUserCheck, FiSettings, FiAward
 } from 'react-icons/fi';
 import { useAuth } from '../context/AuthContext';
-import { userApi, getImageUrl } from '../services/api';
+import { userApi, movieApi, getImageUrl } from '../services/api';
 import MovieCard from '../components/movies/MovieCard';
 import ReviewCard from '../components/reviews/ReviewCard';
 import toast from 'react-hot-toast';
@@ -27,6 +27,8 @@ const Profile = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [followersData, setFollowersData] = useState([]);
   const [followingData, setFollowingData] = useState([]);
+  const [enrichedWatchlist, setEnrichedWatchlist] = useState([]);
+  const [enrichedFavorites, setEnrichedFavorites] = useState([]);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -67,6 +69,45 @@ const Profile = () => {
 
     fetchProfile();
   }, [id, currentUser, navigate]);
+
+  // Enrich watchlist and favorites with movie details from TMDB
+  useEffect(() => {
+    const enrichMovieData = async (items, setEnriched) => {
+      if (!items || items.length === 0) {
+        setEnriched([]);
+        return;
+      }
+
+      const enrichedItems = await Promise.all(
+        items.map(async (item) => {
+          // If item already has title, use it
+          if (item.title) {
+            return item;
+          }
+          // Otherwise fetch from TMDB
+          try {
+            const response = await movieApi.getDetails(item.movieId);
+            return {
+              ...item,
+              title: response.data.title,
+              posterPath: response.data.poster_path
+            };
+          } catch (error) {
+            console.error(`Failed to fetch movie ${item.movieId}:`, error);
+            return item;
+          }
+        })
+      );
+      setEnriched(enrichedItems);
+    };
+
+    if (profile?.watchlist) {
+      enrichMovieData(profile.watchlist, setEnrichedWatchlist);
+    }
+    if (profile?.favorites) {
+      enrichMovieData(profile.favorites, setEnrichedFavorites);
+    }
+  }, [profile?.watchlist, profile?.favorites]);
 
   const handleFollow = async () => {
     if (!isAuthenticated) {
@@ -348,7 +389,7 @@ const Profile = () => {
                 </div>
 
                 {/* Watchlist Preview */}
-                {(isOwnProfile || profile.watchlist) && profile.watchlist?.length > 0 && (
+                {(isOwnProfile || profile.watchlist) && enrichedWatchlist?.length > 0 && (
                   <div className="content-section">
                     <div className="section-header">
                       <h3>Watchlist</h3>
@@ -360,7 +401,7 @@ const Profile = () => {
                       </button>
                     </div>
                     <div className="movie-preview-list">
-                      {profile.watchlist.slice(0, 5).map(item => (
+                      {enrichedWatchlist.slice(0, 5).map(item => (
                         <Link 
                           key={item.movieId} 
                           to={`/details/${item.movieId}`}
@@ -431,9 +472,9 @@ const Profile = () => {
 
             {activeTab === 'watchlist' && (
               <div className="watchlist-content">
-                {profile.watchlist && profile.watchlist.length > 0 ? (
+                {enrichedWatchlist && enrichedWatchlist.length > 0 ? (
                   <div className="movie-card-grid">
-                    {profile.watchlist.map(item => (
+                    {enrichedWatchlist.map(item => (
                       <Link 
                         key={item.movieId}
                         to={`/details/${item.movieId}`}
@@ -479,9 +520,9 @@ const Profile = () => {
 
             {activeTab === 'favorites' && (
               <div className="favorites-content">
-                {profile.favorites && profile.favorites.length > 0 ? (
+                {enrichedFavorites && enrichedFavorites.length > 0 ? (
                   <div className="movie-card-grid">
-                    {profile.favorites.map(item => (
+                    {enrichedFavorites.map(item => (
                       <Link 
                         key={item.movieId}
                         to={`/details/${item.movieId}`}
